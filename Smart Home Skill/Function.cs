@@ -16,7 +16,7 @@ namespace SmartHomeSkill
 {
     public class Function
     {
-        public Stream Handler(JObject input, ILambdaContext context)
+        public JObject Handler(JObject input, ILambdaContext context)
         {
 
             Console.Out.WriteLine("Request:");
@@ -123,7 +123,7 @@ namespace SmartHomeSkill
                 Console.Out.WriteLine(response);
             }
 
-            return new MemoryStream(Encoding.UTF8.GetBytes(response));
+            return JObject.Parse(response);
         }
 
     }
