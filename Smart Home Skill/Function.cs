@@ -11,6 +11,10 @@ using Newtonsoft.Json.Linq;
 
 using SmartHomeSkill.JSON.discovery;
 
+#if DEBUG 
+using SmartHomeSkill.env;
+#endif
+
 [assembly:LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 namespace SmartHomeSkill
 {
@@ -18,7 +22,12 @@ namespace SmartHomeSkill
     {
         public JObject Handler(JObject input, ILambdaContext context)
         {
-
+#if DEBUG
+            Env env = new Env();
+#endif
+            var url = Environment.GetEnvironmentVariable("URL");
+            var user = Environment.GetEnvironmentVariable("USER");
+            var passwd = Environment.GetEnvironmentVariable("PASSWD");
             Console.Out.WriteLine("Request:");
             Console.Out.WriteLine(input.ToString());
 
