@@ -25,6 +25,14 @@ namespace SmartHomeSkill
 #if DEBUG
             Env env = new Env();
 #endif
+            string API_URL = Environment.GetEnvironmentVariable("API_URL");
+            string USER = Environment.GetEnvironmentVariable("USER");
+            string PASSWD = Environment.GetEnvironmentVariable("PASSWD");
+            string ENDPOINT_ID = Environment.GetEnvironmentVariable("ENDPOINT_ID");
+            string ENDPOINT_DESCRIPTION = Environment.GetEnvironmentVariable("ENDPOINT_DESCRIPTION");
+            string ENDPOINT_FRIENDLY_NAME = Environment.GetEnvironmentVariable("ENDPOINT_FRIENDLY_NAME");
+            string ENDPOINT_MANUFACTURER_NAME = Environment.GetEnvironmentVariable("ENDPOINT_MANUFACTURER_NAME");
+
             var url = Environment.GetEnvironmentVariable("URL");
             var user = Environment.GetEnvironmentVariable("USER");
             var passwd = Environment.GetEnvironmentVariable("PASSWD");
@@ -55,11 +63,11 @@ namespace SmartHomeSkill
                     endpoint[] endpoints = new endpoint[1];
                     // --- endpoin-001 ---
                     endpoint endpoint1 = new endpoint();
-                    endpoint1.endpointId = "endpoint-001";
-                    endpoint1.description = "Sample Endpoint Description";
-                    endpoint1.friendlyName = "Sample Endpoint";
-                    endpoint1.manufacturerName = "Sample Manufacturer";
-                    string[] displayCategories = { "SWITCH" };
+                    endpoint1.endpointId = ENDPOINT_ID;
+                    endpoint1.description = ENDPOINT_DESCRIPTION;
+                    endpoint1.friendlyName = ENDPOINT_FRIENDLY_NAME;
+                    endpoint1.manufacturerName = ENDPOINT_MANUFACTURER_NAME; // ÉÅÅ[ÉJÅ[ñº
+                    string[] displayCategories = { "COMPUTER" };
                     endpoint1.displayCategories = displayCategories;
 
                     capabilities[] capabilities = new capabilities[2];
