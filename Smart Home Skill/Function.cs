@@ -107,9 +107,17 @@ namespace SmartHomeSkill
                     string endpointId = jsonRequest["directive"]["endpoint"]["endpointId"].Value<string>();
                     string name = jsonRequest["directive"]["header"]["name"].Value<string>();
 
+                    bool result = false; // check result TurnOff or TurnON.
                     string state = (name == "TurnOff") ? "OFF" : "ON";
-
-                    bool result = true; // check result TurnOff or TurnON.
+                    PowerApi power = new PowerApi(API_URL, USER, PASSWD);
+                    if (state == "OFF")
+                    {
+                        result = power.PowerOff();
+                    }else if(state == "ON")
+                    {
+                        result = power.PowerOn();
+                    }
+                    
                     if (result)
                     {
                         ar = new AlexaResponse("Alexa", "Response", endpointId, "INVALID", correlationToken);

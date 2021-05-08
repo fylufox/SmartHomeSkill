@@ -18,7 +18,7 @@
     "package-type"         : "Zip",
     "function-role"        : "arn:aws:iam::859963303958:role/service-role/smarthome-role-5a118omt",
     "tracing-mode"         : "PassThrough",
-    "environment-variables" : "",
+    "environment-variables" : "\"API_URL\"=\"\";\"USER\"=\"\";\"PASSWD\"=\"\";\"ENDPOINT_ID\"=\"\";\"ENDPOINT_DESCRIPTION\"=\"\";\"ENDPOINT_FRIENDLY_NAME\"=\"\";\"ENDPOINT_MANUFACTURER_NAME\"=\"\"",
     "image-tag"             : "",
     "function-description"  : ""
 }
