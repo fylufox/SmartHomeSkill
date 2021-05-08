@@ -21,7 +21,7 @@ namespace SmartHomeSkill
     {
         private JObject Event = JObject.Parse("{}");
         
-        private JObject Response = JObject.Parse("{}");
+        public JObject Response = JObject.Parse("{}");
         private JObject Header = JObject.Parse("{}");
         private JObject Endpoint = JObject.Parse("{}");
         private JObject Payload = JObject.Parse("{}");
@@ -77,7 +77,7 @@ namespace SmartHomeSkill
             }
         }
 
-        public string CreateContextProperty(string namespaceValue = "Alexa.EndpointHealth", string name = "connectivity", string value = "{}", int uncertaintyInMilliseconds = 0)
+        private string CreateContextProperty(string namespaceValue = "Alexa.EndpointHealth", string name = "connectivity", string value = "{}", int uncertaintyInMilliseconds = 0)
         {
 
             String valueObject;

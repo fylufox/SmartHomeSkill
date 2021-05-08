@@ -59,7 +59,7 @@ namespace SmartHomeSkill
                     endpoint1.description = "Sample Endpoint Description";
                     endpoint1.friendlyName = "Sample Endpoint";
                     endpoint1.manufacturerName = "Sample Manufacturer";
-                    string[] displayCategories = { "OTHER" };
+                    string[] displayCategories = { "SWITCH" };
                     endpoint1.displayCategories = displayCategories;
 
                     capabilities[] capabilities = new capabilities[2];
@@ -89,6 +89,7 @@ namespace SmartHomeSkill
                     endpoints[0] = endpoint1;
                     payload.Add("endpoints", JArray.FromObject(endpoints));
 
+                    ar.Response["event"]["payload"] = payload;
                     break;
 
                 case "Alexa.PowerController":
