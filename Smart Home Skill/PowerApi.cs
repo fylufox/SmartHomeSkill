@@ -19,12 +19,12 @@ namespace SmartHomeSkill
 
         public bool PowerOn()
         {
-            return RequestAPI(url + "/out/api/wol.php");
+            return RequestAPI(url + "/api/home/wol.php");
         }
 
         public bool PowerOff()
         {
-            return RequestAPI(url + "/out/api/poweroff.php");
+            return RequestAPI(url + "/api/home/poweroff.php");
         }
 
         private bool RequestAPI(string furl)
