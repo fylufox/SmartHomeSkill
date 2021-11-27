@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Net.Http;
+using System.Net;
 
 namespace SmartHomeSkill
 {
@@ -29,27 +30,19 @@ namespace SmartHomeSkill
 
         private bool RequestAPI(string furl)
         {
-            var request = new HttpRequestMessage()
+            WebRequest w_req = WebRequest.Create(furl);
+            w_req.Credentials = new NetworkCredential(user, passwd);
+            var r = (HttpWebResponse) w_req.GetResponse();
+
+            if(r.StatusCode == HttpStatusCode.OK)
             {
-                Method = HttpMethod.Post,
-                RequestUri = new Uri(furl)
-            };
-            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(
-                "Basic",
-                Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", user, passwd))));
-            using (var httpclient = new HttpClient())
-            {
-                var response = httpclient.SendAsync(request);
-                var status = response.Result.StatusCode;
-                if (status == System.Net.HttpStatusCode.OK)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return true;
             }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }
